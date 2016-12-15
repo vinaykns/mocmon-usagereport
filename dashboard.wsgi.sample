@@ -1,0 +1,7 @@
+import sys
+
+path_to_app = '/path/to/app'
+if path_to_app not in sys.path:
+  sys.path = [path_to_app] + sys.path
+
+from main import app as application
