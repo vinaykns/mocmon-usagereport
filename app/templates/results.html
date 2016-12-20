@@ -3,5 +3,8 @@
 <head><title>Results</title></head>
 <body>
 <h1>Usage from {{ start }} to {{ end }}</h1>
+{% for r in results %}
+  {{ r }}<br />
+{% endfor %}
 </body>
 </html>
