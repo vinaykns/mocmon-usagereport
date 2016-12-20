@@ -1,10 +1,32 @@
 <!DOCTYPE html>
 <html>
 <head><title>Results</title></head>
-<body>
 <h1>Usage from {{ start }} to {{ end }}</h1>
-{% for r in results %}
-  {{ r }}<br />
+<style>
+table, th, td {
+    border: 1px solid black;
+    padding: 4px;
+}
+table{
+    border-spacing: 15px;
+}
+</style>
+<body>
+<table style="width:100%">
+  <tr>
+    <th>Affiliation</th>
+    <th>DiskGb</th>
+    <th>MemoryMb</th>
+    <th>Vcpus</th>
+  </tr>
+  
+ {% for k,v in results.items() %}
+  <tr>
+    <th>{{k}}</th>
+    <th>{{v['Diskvalue']}}</th>
+    <th>{{v['Memoryvalue']}}</th>
+    <th>{{v['CPUvalue']}}</th>
+  </tr>
 {% endfor %}
 </body>
 </html>

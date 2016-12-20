@@ -113,7 +113,7 @@ resource_names = ['DiskGB','Memoryvalue','CPUvalue']
 timedelta = 1
 total = {}
 sizes = []
-results1 = []
+results1 = {}
 tenants_with_usage = {}
 for category in affi_tenants.viewkeys():
     tenants_with_usage[category] = set()
@@ -141,7 +141,7 @@ for category in affi_tenants.viewkeys():
         total[category][1] += resource_values[1]
         total[category][2] += resource_values[2]
 
-    results1.append(FORMATTER.format(tenant = category, Diskvalue = total[category][0], Memoryvalue = total[category][1], CPUvalue = total[category][2]))
+    results1[category] = dict(Diskvalue = total[category][0], Memoryvalue = total[category][1], CPUvalue = total[category][2])
     sizes.append(total[category])
     tenant_without_usage_raw = alltenants[category].difference(tenants_with_usage[category])
 
