@@ -5,8 +5,13 @@
 <style>
 table, th, td {
     border: 1px solid black;
-    padding: 4px;
+    border-collapse: collapse;
 }
+th, td {
+    padding: 5px;
+    text-align: left;
+}
+
 table{
     border-spacing: 15px;
 }
@@ -15,17 +20,17 @@ table{
 <table style="width:100%">
   <tr>
     <th>Affiliation</th>
-    <th>DiskGb</th>
-    <th>MemoryMb</th>
-    <th>Vcpus</th>
+    <th>VCPU Hours</th>
+    <th>DiskGB Hours</th>
+    <th>MemoryMB Hours</th>
   </tr>
   
  {% for k,v in results.items() %}
   <tr>
     <th>{{k}}</th>
-    <th>{{v['Diskvalue']}}</th>
-    <th>{{v['Memoryvalue']}}</th>
-    <th>{{v['CPUvalue']}}</th>
+    <th>{{'%0.2f' % v['CPUvalue']|float}}</th>
+    <th>{{'%0.2f' % v['Diskvalue']|float}}</th>
+    <th>{{'%0.2f' % v['Memoryvalue']|float}}</th>
   </tr>
 {% endfor %}
 </body>

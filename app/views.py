@@ -21,7 +21,6 @@ def index():
       dates.end.append(end)
       import calculation
       results1 = calculation.results1
-      pdb.set_trace()
       return flask.render_template('results.html', start=start, end=end, results=results1)
     else:
      flask.abort(500)
