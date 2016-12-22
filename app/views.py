@@ -6,8 +6,7 @@ import sys
 import datetime
 import json
 import affi
-import dates
-import pdb
+from .calculation import calculation
 
 @app.route('/', methods=['POST', 'GET'])
 def index():
@@ -17,10 +16,7 @@ def index():
 
       start = form.start_date.data
       end = form.end_date.data
-      dates.start.append(start)
-      dates.end.append(end)
-      import calculation
-      results1 = calculation.results1
+      results1 = calculation(start,end)
       return flask.render_template('results.html', start=start, end=end, results=results1)
     else:
      flask.abort(500)
