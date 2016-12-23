@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head><title>Results</title></head>
-<h1>Usage from {{ start }} to {{ end }}</h1>
+<h1>Allocation from {{ start }} to {{ end }}</h1>
 <style>
 table, th, td {
     border: 1px solid black;
@@ -23,6 +23,7 @@ table{
     <th>VCPU Hours</th>
     <th>DiskGB Hours</th>
     <th>MemoryMB Hours</th>
+    <th>No of Users</th>
   </tr>
   
  {% for k,v in results.items() %}
@@ -31,6 +32,7 @@ table{
     <th>{{'%0.2f' % v['CPUvalue']|float}}</th>
     <th>{{'%0.2f' % v['Diskvalue']|float}}</th>
     <th>{{'%0.2f' % v['Memoryvalue']|float}}</th>
+    <th>{{ v['Users'] }}</th>
   </tr>
 {% endfor %}
 </body>

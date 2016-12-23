@@ -6,6 +6,7 @@ import sys
 import datetime
 import json
 import affi
+import pdb 
 from .calculation import calculation
 
 @app.route('/', methods=['POST', 'GET'])

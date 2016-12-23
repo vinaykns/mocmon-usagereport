@@ -108,7 +108,7 @@ def calculation(start,end):
                alltenants[affi_dict[key]].add(tenant_name)
 
   #FORMATTER matches schema of /etc/sensu/plugins/cpu-metrics.rb
-  FORMATTER = "{tenant},{Diskvalue},{Memoryvalue},{CPUvalue}"
+  FORMATTER = "{tenant},{Diskvalue},{Memoryvalue},{CPUvalue},{Users}"
   resource_names = ['DiskGB','Memoryvalue','CPUvalue']
   #resource_values = []
   timedelta = 1
@@ -116,16 +116,15 @@ def calculation(start,end):
   sizes = []
   results1 = {}
   tenants_with_usage = {}
+  no_users ={}
   for category in affi_tenants.viewkeys():
       tenants_with_usage[category] = set()
-      #print "#"*20
       total[category] = [0,0,0]
       for usage in affi_tenants[category]:
           try:
               tenant_name = t_dict[usage['tenant_id']]
           except KeyError:
               continue
-          #pdb.set_trace()
           tenants_with_usage[category].add(tenant_name)
           tenant_name = tenant_name.replace(" ", "-").replace(".","_")
           images=0
@@ -142,8 +141,7 @@ def calculation(start,end):
           total[category][1] += resource_values[1]
           total[category][2] += resource_values[2]
 
-      results1[category] = dict(Diskvalue = total[category][0], Memoryvalue = total[category][1], CPUvalue = total[category][2])
+      results1[category] = dict(Diskvalue = total[category][0], Memoryvalue = total[category][1], CPUvalue = total[category][2], Users = len(affi_tenants[category]))
       sizes.append(total[category])
       tenant_without_usage_raw = alltenants[category].difference(tenants_with_usage[category])
   return results1
-
