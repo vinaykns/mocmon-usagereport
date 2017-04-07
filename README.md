@@ -15,6 +15,6 @@ Then install the packages required for the flask application to run, in this cas
 1. pip install flask
 2. pip install flask_wtf
 
-Then finally run python main.py to open a web page listening at port 8888.
+Then finally run python main.py to open a web page listening at port 8888.(localhost:8888 on your webbrowser.)
 To get the allocation statistics per Organisation select the dates from the web page to display the output.
 To get the user statistics per organisation go to path localhost:8888/users 
