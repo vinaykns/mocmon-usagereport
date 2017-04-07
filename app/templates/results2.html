@@ -1,12 +1,13 @@
 <!DOCTYPE html>
 <html>
 <head><title>Results</title></head>
-<h1>Allocation from {{ start }} to {{ end }}</h1>
+<h1>Current_Users for Each Affiliation</h1>
 <style>
 table, th, td {
     border: 1px solid black;
     border-collapse: collapse;
 }
+
 th, td {
     padding: 5px;
     text-align: left;
@@ -15,25 +16,19 @@ th, td {
 table{
     border-spacing: 15px;
 }
-</style>
+</style>   
 <body>
 <table style="width:100%">
   <tr>
     <th>Affiliation</th>
-    <th>VCPU Hours</th>
-    <th>DiskGB Hours</th>
-    <th>MemoryMB Hours</th>
-    <th>No of Users</th>
+    <th>Users</th>
   </tr>
-  
+
  {% for k,v in results.items() %}
   <tr>
-    <th>{{k}}</th>
-    <th>{{'%0.2f' % v['CPUvalue']|float}}</th>
-    <th>{{'%0.2f' % v['Diskvalue']|float}}</th>
-    <th>{{'%0.2f' % v['Memoryvalue']|float}}</th>
-    <th>{{ v['Users'] }}</th>
+    <td>{{k}}</td>
+    <td>{{v}}</td>
   </tr>
 {% endfor %}
-</body>
+</body> 
 </html>

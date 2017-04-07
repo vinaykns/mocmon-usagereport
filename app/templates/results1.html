@@ -16,6 +16,7 @@ table{
     border-spacing: 15px;
 }
 </style>
+
 <body>
 <table style="width:100%">
   <tr>
@@ -23,17 +24,28 @@ table{
     <th>VCPU Hours</th>
     <th>DiskGB Hours</th>
     <th>MemoryMB Hours</th>
-    <th>No of Users</th>
+    <th>No of Projects</th>
   </tr>
   
  {% for k,v in results.items() %}
   <tr>
-    <th>{{k}}</th>
-    <th>{{'%0.2f' % v['CPUvalue']|float}}</th>
-    <th>{{'%0.2f' % v['Diskvalue']|float}}</th>
-    <th>{{'%0.2f' % v['Memoryvalue']|float}}</th>
-    <th>{{ v['Users'] }}</th>
+    <td>{{k}}</td>
+    <td>{{'%0.2f' % v['CPUvalue']|float}}</td>
+    <td>{{'%0.2f' % v['Diskvalue']|float}}</td>
+    <td>{{'%0.2f' % v['Memoryvalue']|float}}</td>
+    <td>{{ v['Projects'] }}</td>
   </tr>
-{% endfor %}
+ {% endfor %}  
+
+ {% for k,v in total.items() %}
+  <tr>
+    <td>{{k}}</td>
+    <td>{{'%0.2f' % v['CPUvalue']|float}}</td>
+    <td>{{'%0.2f' % v['Diskvalue']|float}}</td>
+    <td>{{'%0.2f' % v['Memoryvalue']|float}}</td>
+    <td>{{ v['Projects'] }}</td>
+  </tr>
+ {% endfor %} 
+
 </body>
 </html>
