@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head><title>Results</title></head>
+<h1>Allocation from {{ start }} to {{ end }}</h1>
+<style>
+table, th, td {
+    border: 1px solid black;
+    border-collapse: collapse;
+}
+th, td {
+    padding: 5px;
+    text-align: left;
+}
+
+table{
+    border-spacing: 15px;
+}
+</style>
+
+<body>
+<table style="width:100%">
+  <tr>
+    <th>Affiliation</th>
+    <th>VCPU Hours</th>
+    <th>DiskGB Hours</th>
+    <th>MemoryMB Hours</th>
+    <th>No of Projects</th>
+  </tr>
+  
+ {% for k,v in results.items() %}
+  <tr>
+    <td>{{k}}</td>
+    <td>{{'%0.2f' % v['CPUvalue']|float}}</td>
+    <td>{{'%0.2f' % v['Diskvalue']|float}}</td>
+    <td>{{'%0.2f' % v['Memoryvalue']|float}}</td>
+    <td>{{ v['Projects'] }}</td>
+  </tr>
+ {% endfor %}  
+
+ {% for k,v in total.items() %}
+  <tr>
+    <td>{{k}}</td>
+    <td>{{'%0.2f' % v['CPUvalue']|float}}</td>
+    <td>{{'%0.2f' % v['Diskvalue']|float}}</td>
+    <td>{{'%0.2f' % v['Memoryvalue']|float}}</td>
+    <td>{{ v['Projects'] }}</td>
+  </tr>
+ {% endfor %} 
+
+</body>
+</html>
